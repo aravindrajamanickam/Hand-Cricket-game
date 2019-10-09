@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hand cricket</title>
+     <script type="text/javascript" >
+         
+           function hc(){
+                    var count=0;
+                    var i=1;
+                    while(true)
+                    {
+                        var input = Number(prompt("Enter"));
+                        if(input<7 && input>0)
+                            {
+                                var random=Math.floor(Math.random()*10)+1;
+                                count=count+input;
+                                if(count>50 && count<53)
+                                    {
+                                         alert("Congrats! You hit a half century ...!")
+                                    }
+                                if(count>100 && count<103)
+                                    {
+                                         alert("Congrats! You hit a century ...!")
+                                    }
+                                    
+                                if (input==random)
+                                {
+                                    document.getElementById("score").innerHTML = "Your score was "+count;
+                                    alert("You got OUT! and Your score will be displayed down ");
+                                    break;
+                                }
+                            }
+                      
+                        else if(input>7 && input<0)
+                        {
+                            alert("You entered a wrong value");
+                        }
+                        
+                    }
+           }
+    </script>
+	<link rel="stylesheet" type="text/css" href="css/handcricket.css">
+</head>
+<body>
+        <div class="hc">
+            <h1>Hand cricket</h1>
+            <h2>Ready for the game</h2>
+            <button class="btn" onclick="hc()" id="button">Yeah!</button>
+            <p id="score"></p>
+        </div>
+</body>
+</html>
