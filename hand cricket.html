@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hand cricket</title>
+     <script type="text/javascript" >
+           var count=0;
+           function hc(){
+                count=0;    
+                while(true)
+                    {
+                        var input = Number(prompt("Enter"));                  
+                        if(input<7 && input>0)
+                            {
+                                var random=Math.floor(Math.random()*10)+1;
+                                count=count+input; 
+                                if (input==random)
+                                {
+                                    count=count-input;
+                                    document.getElementById("score").innerHTML = "Your score was "+count;
+                                    alert("You got OUT! and Your score will be displayed down ");
+                                    break;
+                                }    
+                        }
+                      
+                        else if(input>7 && input<0)
+                        {
+                            alert("You entered a wrong value");
+                        }
+                        
+                    }
+           }
+         function hc1()
+         {
+                                
+                        var sum=0;
+                        while(true)
+                        {
+                                
+                                var ip=Number(prompt("hi"));  
+                                var r=Math.floor(Math.random()*6)+1;
+                                if(ip!=r)
+                                {
+                                    
+                                    sum=sum+r;
+                                    if(sum>count )
+                                    {
+                                            alert("You lost!");
+                                            document.getElementById("scor").innerHTML = "Opponent score was "+sum;
+                                            break;
+                                    }
+                                
+                                }
+                                else 
+                                {
+                                    if(sum<count)
+                                        {
+                                            alert("You won!");
+                                            document.getElementById("scor").innerHTML = "Opponent score was "+sum;
+                                            break;
+                                        }
+                                   
+                                }
+                            
+                        }
+         }
+    </script>
+	<link rel="stylesheet" type="text/css" href="css/handcricket.css">
+</head>
+<body>
+        <div class="hc">
+            <h1>Hand cricket</h1>
+            <h2>Ready for the game</h2>
+            <button class="btn" onclick="hc()" id="button">Batting!</button>
+            <button class="btn" onclick="hc1()" id="button">Bowling!</button>
+            <p id="score"></p>
+             <p id="scor"></p>
+            <p id="sco"></p>
+        </div>
+</body>
+</html>
