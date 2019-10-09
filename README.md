@@ -1,2 +1,3 @@
 # Hand-Cricket-game
-Game using javascript
+ Game using javascript
+ Enjoy ur game with this code
