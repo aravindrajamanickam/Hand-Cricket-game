@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hand cricket</title>
+     <script type="text/javascript" >
+         
+         
+         // Toss - Odd  
+         
+         
+         function hc()
+            {
+                Odd=Number(prompt("Choose value 1-5 :"));
+                var r=Math.floor(Math.random()*5)+1;
+                var remainder = (Odd+r)%2
+                if(remainder==1)
+                    {
+                        alert("You won the toss") ;
+                        document.getElementById('button3').style.display='block';
+                        document.getElementById('button4').style.display='block';
+                        
+                    }
+                else
+                    {
+                        alert("You lose the toss") ;
+                        var r1=Math.floor(Math.random()*2)+1;
+                        if(r1==1)
+                            {
+                                alert("You have been asked to bowl");
+                                hc3();
+                            }
+                         else if(r1==2)
+                            {
+                                alert("You have been asked to bat");
+                                hc2();
+                            }
+                    }
+            }
+         
+         
+         // Toss - Even
+         
+         
+         function hc1()
+            {
+                Even=Number(prompt("Choose value 1-5 :"));
+                var r=Math.floor(Math.random()*5)+1;
+                var remainder = (Even+r)%2
+                if(remainder==0)
+                    {
+                        alert("You won the toss") ; 
+                        document.getElementById('button3').style.display='block';
+                        document.getElementById('button4').style.display='block'; 
+                    }
+                else
+                    {
+                        alert("You lose the toss") ;
+                        var r1=Math.floor(Math.random()*2)+1;
+                        if(r1==1)
+                            {
+                                alert("You have been asked to bowl");
+                                hc3();
+                            }
+                         else if(r1==2)
+                            {
+                                alert("You have been asked to bat");
+                                hc2();
+                            }
+                    }                        
+            }
+         
+         
+         // First batting
+         
+         
+            var count=0;
+           function hc2(){
+                count=0;    
+                while(true)
+                    {
+                        var input = Number(prompt("1st innings batting"));                  
+                        if(input<7 && input>0)
+                            {
+                                var random=Math.floor(Math.random()*10)+1;
+                                console.log("Opponent bowling 1st :"+random);
+                                count=count+input; 
+                                if (input==random)
+                                {
+                                    count=count-input;
+                                    document.getElementById("firstbattingscore").innerHTML = "Your score was "+count;
+                                    alert("You got OUT! and Your score will be displayed down ");
+                                    alert("You will be bowling now")
+                                    secondbowling();
+                                    break;
+                                }    
+                        }
+                      
+                        else if(input>7 && input<0)
+                        {
+                            alert("You entered a wrong value");
+                        }
+                        
+                    }
+           }
+         
+        
+            // First Bowling
+         
+         
+            var firstbowlingscore=0;
+            function hc3()
+            {
+                firstbowlingscore=0;
+                while(true)
+                    {
+                        var  ball=Number(prompt("1st innings bowling"));
+                        if(ball<7 && ball>0)
+                            {
+                                var run=Math.floor(Math.random()*6)+1;
+                                console.log("Opponent batting 1st :"+run);
+                                console.log(run);
+                                if(ball!= run)
+                                    {
+                                        firstbowlingscore=firstbowlingscore+run;
+                                    }
+                                else 
+                                    {
+                                        alert("Opponent got out");
+                                        document.getElementById("firstbowlingscore").innerHTML = "Opponent score was "+firstbowlingscore;
+                                        alert("You will be batting now");
+                                        secondbatting();
+                                        break;
+                                    }
+                                
+                            }
+                        
+                    } 
+            }
+            
+         
+            // Second Bowling 
+         
+         
+            function secondbowling()
+            {
+                        var sum=0;
+                        while(true)
+                        {
+                                
+                                var ip=Number(prompt("2nd innings bowling"));  
+                                var r=Math.floor(Math.random()*6)+1;
+                                console.log("Opponent batting 2nd :"+r);
+                                if(ip!=r)
+                                {
+                                    
+                                    sum=sum+r;
+                                    if(sum>count)
+                                    {
+                                            alert("You lost!");
+                                            document.getElementById("secondbowlingscore").innerHTML = "Opponent score was "+sum;
+                                            break;
+                                    }
+                                
+                                }
+                                else 
+                                {
+                                    if(sum<count)
+                                        {
+                                            alert("You won!");
+                                            document.getElementById("secondbowlingscore").innerHTML = "Opponent score was "+sum;
+                                            break;
+                                        }
+                                   
+                                }
+                        }
+            }
+         
+         
+         
+         // Second Batting
+         
+         
+         
+            function secondbatting()
+            {
+                    var bat=0;
+                    while(true)
+                        {
+                            var batscore=Number(prompt("2nd innings bowling"));
+                            var oppballs=Math.floor(Math.random()*10)+1; 
+                            console.log("Opponent bowling 2nd :"+oppballs);
+                            if(batscore!=oppballs)
+                                {
+                                    bat=bat+batscore;
+                                    if(bat>firstbowlingscore)
+                                        {
+                                            alert("You won");
+                                            document.getElementById("secondbattingscore").innerHTML = "Your score was "+bat;
+                                            break;
+                                        }
+                                }
+                            else
+                                {
+                                    if(bat<firstbowlingscore)
+                                        {
+                                            alert("You lose");
+                                             document.getElementById("secondbattingscore").innerHTML = "Your score was "+bat;
+                                            break;
+                                        }
+                                }
+                        }
+            }
+            
+    </script>
+	<link rel="stylesheet" type="text/css" href="css/handcricket.css">
+</head>
+<body>
+        <div class="hc">
+            <h1>Hand cricket</h1>
+            <h2>Choose what you want!!</h2>
+            <button class="btn" onclick="hc()" id="button1">Odd</button>
+            <button class="btn" onclick="hc1()" id="button2">Even</button>
+            <button class="btn" onclick="hc2()" style="display: none" id="button3">Batting!</button>
+            <button class="btn" onclick="hc3()" style="display: none" id="button4">Bowling!</button>
+            <p id="firstbattingscore"></p>
+            <p id="firstbowlingscore"></p>
+            <p id="secondbattingscore"></p>
+            <p id="secondbowlingscore"></p>
+            
+        </div>
+</body>
+</html>
